@@ -6,6 +6,8 @@ TagManager:
   tags:
   - slow
   - enemy
+  - damage
+  - collapse
   layers:
   - Default
   - TransparentFX

@@ -11,10 +11,11 @@ namespace UnityStandardAssets._2D
         private bool m_Jump;
 		private bool slowed;
 		public int health = 10;
+		private bool attack;
 
         private void Awake()
         {
-            m_Character = GetComponent<PlatformerCharacter2D>();
+			m_Character = GetComponent<PlatformerCharacter2D>();
         }
 
 		void OnGUI() {
@@ -29,13 +30,11 @@ namespace UnityStandardAssets._2D
 			Debug.Log(health);
             if (!m_Jump)
             {
-                // Read the jump input in Update so button presses aren't missed.
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-				if (Input.GetKeyDown(KeyCode.UpArrow)) {
-					m_Jump = Input.GetKeyDown (KeyCode.UpArrow);
-				}
-
+				m_Jump = Input.GetKeyDown (KeyCode.UpArrow);
             }
+			if (!attack) {
+				attack = Input.GetKeyDown (KeyCode.Space);
+			}
         }
 
 
@@ -52,27 +51,37 @@ namespace UnityStandardAssets._2D
 				}
 				// Pass all parameters to the character control script.
 				m_Character.Move (h, crouch, m_Jump);
+				m_Character.Attack (attack);
 			}
             m_Jump = false;
         }
 
 		void OnCollisionEnter2D(Collision2D col)
 		{
-			if(col.gameObject.tag == "slow")
+			if (col.gameObject.tag == "slow")
 			{
 				slowed = true;
 			}
-
-			if (col.gameObject.tag == "enemy") {
+			else if (col.gameObject.tag == "enemy")
+      {
+				health = health-1;
+      }
+			else if (col.gameObject.tag == "damage")
+			{
 				health = health-1;
 			}
 		}
 
 		private void OnCollisionExit2D(Collision2D col)
 		{
-			if(col.gameObject.tag == "slow")
+			if (col.gameObject.tag == "slow")
 			{
 				slowed = false;
+			}
+
+			else if (col.gameObject.tag == "damage")
+			{
+				//TODO: MAKE STOP TAKE DAMAGE
 			}
 		}
 
