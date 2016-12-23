@@ -9,6 +9,7 @@ namespace UnityStandardAssets._2D
     {
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
+		private bool slowed;
 
 
         private void Awake()
@@ -35,12 +36,34 @@ namespace UnityStandardAssets._2D
         {
             // Read the inputs.
             bool crouch = Input.GetKey(KeyCode.DownArrow);
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-			if (h >= 0) {
+			float h = CrossPlatformInputManager.GetAxis("Horizontal");
+			if (h >= 0)
+			{
+				if (slowed) //TODO: move this logic to PlatformerCharacter2D and just pass slowed in to Move
+				{
+					h /= 2;
+				}
 				// Pass all parameters to the character control script.
 				m_Character.Move (h, crouch, m_Jump);
 			}
             m_Jump = false;
         }
+
+		void OnCollisionEnter2D(Collision2D col)
+		{
+			if(col.gameObject.tag == "slow")
+			{
+				slowed = true;
+			}
+		}
+
+		private void OnCollisionExit2D(Collision2D col)
+		{
+			if(col.gameObject.tag == "slow")
+			{
+				slowed = false;
+			}
+		}
+
     }
 }
