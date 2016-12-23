@@ -99,6 +99,15 @@ namespace UnityStandardAssets._2D
             }
         }
 
+		public void Attack(bool attack)
+		{
+			// TODO: animate sword
+			// TODO: reduce health of enemy if successful
+			if (attack) {
+				Debug.Log ("test");
+			}
+		}
+
 
         private void Flip()
         {

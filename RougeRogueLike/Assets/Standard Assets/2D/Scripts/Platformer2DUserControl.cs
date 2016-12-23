@@ -10,11 +10,12 @@ namespace UnityStandardAssets._2D
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
 		private bool slowed;
+		private bool attack;
 
 
         private void Awake()
         {
-            m_Character = GetComponent<PlatformerCharacter2D>();
+			m_Character = GetComponent<PlatformerCharacter2D>();
         }
 
 
@@ -22,13 +23,11 @@ namespace UnityStandardAssets._2D
         {
             if (!m_Jump)
             {
-                // Read the jump input in Update so button presses aren't missed.
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-				if (Input.GetKeyDown(KeyCode.UpArrow)) {
-					m_Jump = Input.GetKeyDown (KeyCode.UpArrow);
-				}
-
+				m_Jump = Input.GetKeyDown (KeyCode.UpArrow);
             }
+			if (!attack) {
+				attack = Input.GetKeyDown (KeyCode.Space);
+			}
         }
 
 
@@ -45,6 +44,7 @@ namespace UnityStandardAssets._2D
 				}
 				// Pass all parameters to the character control script.
 				m_Character.Move (h, crouch, m_Jump);
+				m_Character.Attack (attack);
 			}
             m_Jump = false;
         }

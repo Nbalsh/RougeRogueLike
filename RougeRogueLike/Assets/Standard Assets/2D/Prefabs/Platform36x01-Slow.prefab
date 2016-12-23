@@ -308,8 +308,8 @@ GameObject:
   - component: {fileID: 4816530835076476}
   - component: {fileID: 212302435128514302}
   m_Layer: 0
-  m_Name: PrototypeWhite04x01
-  m_TagString: Untagged
+  m_Name: Platform36x01-Slow
+  m_TagString: slow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
