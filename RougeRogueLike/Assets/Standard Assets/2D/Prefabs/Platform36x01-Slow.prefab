@@ -308,7 +308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4706536505754694}
   m_Layer: 0
-  m_Name: Platform36x01 1
+  m_Name: Platform36x01-Slow
   m_TagString: slow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

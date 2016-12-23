@@ -152,6 +152,14 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 4217337520264568, guid: 8e637464ca2b844cdbbc7b73ab63db22, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217337520264568, guid: 8e637464ca2b844cdbbc7b73ab63db22, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 232917897494430848, guid: 8e637464ca2b844cdbbc7b73ab63db22, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8e637464ca2b844cdbbc7b73ab63db22, type: 2}
@@ -362,6 +370,29 @@ DistanceJoint2D:
   m_AutoConfigureDistance: 0
   m_Distance: 0.005
   m_MaxDistanceOnly: 0
+--- !u!233 &1854673266
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1854673257}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 374596941}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -0.89801705, y: -0.25904384}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 1
+  m_AngleLimits:
+    m_LowerAngle: -25
+    m_UpperAngle: 25
 --- !u!4 &1984149623 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4217337520264568, guid: 8e637464ca2b844cdbbc7b73ab63db22,
