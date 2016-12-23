@@ -51,17 +51,27 @@ namespace UnityStandardAssets._2D
 
 		void OnCollisionEnter2D(Collision2D col)
 		{
-			if(col.gameObject.tag == "slow")
+			if (col.gameObject.tag == "slow")
 			{
 				slowed = true;
+			}
+
+			else if (col.gameObject.tag == "damage")
+			{
+				//TODO: MAKE TAKE DAMAGE
 			}
 		}
 
 		private void OnCollisionExit2D(Collision2D col)
 		{
-			if(col.gameObject.tag == "slow")
+			if (col.gameObject.tag == "slow")
 			{
 				slowed = false;
+			}
+
+			else if (col.gameObject.tag == "damage")
+			{
+				//TODO: MAKE STOP TAKE DAMAGE
 			}
 		}
 
