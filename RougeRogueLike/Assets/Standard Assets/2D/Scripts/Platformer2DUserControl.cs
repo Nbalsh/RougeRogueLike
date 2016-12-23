@@ -10,17 +10,24 @@ namespace UnityStandardAssets._2D
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
 		private bool slowed;
+		public int health = 10;
 		private bool attack;
-
 
         private void Awake()
         {
 			m_Character = GetComponent<PlatformerCharacter2D>();
         }
 
+		void OnGUI() {
+			GUI.Label(new Rect(10, 10, 100, 20), health.ToString());
+		}
 
         private void Update()
         {
+			if (health <= 0) {
+				Destroy (this.gameObject);
+			}
+			Debug.Log(health);
             if (!m_Jump)
             {
 				m_Jump = Input.GetKeyDown (KeyCode.UpArrow);
@@ -55,10 +62,13 @@ namespace UnityStandardAssets._2D
 			{
 				slowed = true;
 			}
-
+			else if (col.gameObject.tag == "enemy")
+      {
+				health = health-1;
+      }
 			else if (col.gameObject.tag == "damage")
 			{
-				//TODO: MAKE TAKE DAMAGE
+				health = health-1;
 			}
 		}
 
