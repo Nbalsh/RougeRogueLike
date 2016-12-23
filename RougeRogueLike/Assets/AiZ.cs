@@ -19,7 +19,7 @@ public class AiZ : MonoBehaviour {
 
 
 		//move towards the player
-		if (Vector3.Distance (transform.position, target.position) > 1f) {//move if distance from target is greater than 1
+		if (Vector3.Distance (transform.position, target.position) > 0f) {//move if distance from target is greater than 1
 			transform.Translate (new Vector3 (speed * Time.deltaTime, 0, 0));
 		} else if (Vector3.Distance (transform.position, target.position) <= 1f) {
 			//decrement health??

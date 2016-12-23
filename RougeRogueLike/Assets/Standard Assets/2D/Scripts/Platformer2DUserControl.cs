@@ -10,16 +10,23 @@ namespace UnityStandardAssets._2D
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
 		private bool slowed;
-
+		public int health = 10;
 
         private void Awake()
         {
             m_Character = GetComponent<PlatformerCharacter2D>();
         }
 
+		void OnGUI() {
+			GUI.Label(new Rect(10, 10, 100, 20), health.ToString());
+		}
 
         private void Update()
         {
+			if (health <= 0) {
+				Destroy (this.gameObject);
+			}
+			Debug.Log(health);
             if (!m_Jump)
             {
                 // Read the jump input in Update so button presses aren't missed.
@@ -54,6 +61,10 @@ namespace UnityStandardAssets._2D
 			if(col.gameObject.tag == "slow")
 			{
 				slowed = true;
+			}
+
+			if (col.gameObject.tag == "enemy") {
+				health = health-1;
 			}
 		}
 
